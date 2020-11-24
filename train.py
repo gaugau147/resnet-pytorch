@@ -42,7 +42,7 @@ def train(epoch):
                 writer.add_scalar('LastLayerGradients/grad_norm2_weights', param.grad.norm(), n_iter)
             if 'bias' in name:
                 writer.add_scalar('LastLayerGradients/grad_norm2_bias', param.grad.norm(), n_iter)
-        print('Training Epoch: {epoch} [{trained_samples}/{total_sample}]\tLoss: {:0.4f}\tLR: {:0.6f}'.format(
+        print('Training Epoch: {epoch} [{trained_samples}/{total_samples}]\tLoss: {:0.4f}\tLR: {:0.6f}'.format(
             loss.item(), 
             optimizer.param_groups[0]['lr'],
             epoch=epoch,
