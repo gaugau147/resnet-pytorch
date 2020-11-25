@@ -11,6 +11,8 @@ import torchvision
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 
+from torchvision import datasets
+
 
 def get_network(args):
     '''
@@ -167,3 +169,55 @@ def last_epoch(weights_folder):
     resume_epoch = int(weight_file.split('-')[1])
 
     return resume_epoch
+
+def get_train_data(data_folder, batch_size):
+    '''
+    Get data from root folder
+    Return torch dataloader
+
+    root
+    |_class_1
+    |  |_image1.png
+    |_class_2
+       |_image2.png
+    '''
+    data_transform = transforms.Compose([
+            transforms.RandomResizedCrop(224),
+            transforms.RandomHorizontalFlip(),
+            transforms.ToTensor(),
+            # transforms.Normalize([])
+        ])
+    image_dataset = datasets.ImageFolder(data_folder, data_transform)
+
+    # wrap data and label into Tensor
+    dataloader = DataLoader(image_dataset,
+                            batch_size=4,
+                            shuffle=True,
+                            num_workers=4)
+    return dataloader
+
+
+def get_test_data(data_folder, batch_size):
+    '''
+    Get data from root folder
+    Return torch dataloader
+
+    root
+    |_class_1
+    |  |_image1.png
+    |_class_2
+       |_image2.png
+    '''
+    data_transform = transforms.Compose([
+            transforms.RandomResizedCrop(224),
+            transforms.ToTensor(),
+            # transforms.Normalize([])
+        ])
+    image_dataset = datasets.ImageFolder(data_folder, data_transform)
+
+    # wrap data and label into Tensor
+    dataloader = DataLoader(image_dataset,
+                            batch_size=4,
+                            shuffle=True,
+                            num_workers=4)
+    return dataloader
