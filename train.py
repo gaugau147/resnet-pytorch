@@ -132,7 +132,7 @@ if __name__ == '__main__':
 
     loss_function = nn.CrossEntropyLoss()
     optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=0.9, weight_decay=5e-4)
-    train_scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=settings.MILESTONES, gamma=0.2) #learning rate decay
+    train_scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=settings.MILESTONES, gamma=0.2) # learning rate decay
     iter_per_epoch = len(cifar100_training_loader)
     warmup_scheduler = WarmUpLR(optimizer, iter_per_epoch * args.warm)
 
@@ -194,7 +194,7 @@ if __name__ == '__main__':
 
         # start to save best performance model after learning rate decay to 0.01
         if epoch > settings.MILESTONES[1] and best_acc < acc:
-            torch.save(net.state_dict(), checkpoint_path.format(net=arg.net, epoch=epoch, type='best'))
+            torch.save(net.state_dict(), checkpoint_path.format(net=args.net, epoch=epoch, type='best'))
             best_acc = acc
             continue
         if not epoch % settings.SAVE_EPOCH:

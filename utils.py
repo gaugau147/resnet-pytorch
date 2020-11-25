@@ -120,7 +120,7 @@ def most_recent_folder(net_weights, fmt):
         return ''
     
     # sort folders by folder created time
-    folders = sorted(folder, key=lambda f: datetime.datetime.strptime(f, fmt))
+    folders = sorted(folders, key=lambda f: datetime.datetime.strptime(f, fmt))
     return folders[-1]
 
 
@@ -153,7 +153,7 @@ def most_recent_weights(weights_folder):
     regex_str = r'([A-Za-z0-9]+)-([0-9]+)-(regular|best)'
 
     # sort files by epoch
-    weight_files = sorted(weight_files, keys=lambda w: int(re.search(regex_str, w).groups()[1]))
+    weight_files = sorted(weight_files, key=lambda w: int(re.search(regex_str, w).groups()[1]))
 
     return weight_files
 
