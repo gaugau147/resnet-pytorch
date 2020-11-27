@@ -16,6 +16,7 @@ if __name__=='__main__':
     parser.add_argument('-weights', type=str, required=True, help='the weight file')
     parser.add_argument('-gpu', type=bool, default=True, help='use GPU or not')
     parser.add_argument('-batch_size', type=int, default=16, help='batch size for dataloader')
+    parser.add_argument('-num_classes', type=int, default=6, help='number of classes in dataset')
     args = parser.parse_args()
 
     net = get_network(args)
