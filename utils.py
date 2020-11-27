@@ -21,11 +21,11 @@ def get_network(args):
 
     if args.net == 'resnet34':
         from model import resnet34
-        net = resnet34()
+        net = resnet34(args.num_classes)
 
     elif args.net == 'resnet50':
         from model import resnet50
-        net = resnet50()
+        net = resnet50(args.num_classes)
 
     else:
         print(args.net + ' is not supported, please enter resnet34 or resnet50')
