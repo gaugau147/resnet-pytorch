@@ -81,9 +81,9 @@ def eval_training(epoch=0, tb=True):
         correct += preds.eq(labels).sum()
     
     finish = time.time()
-    if args.gpu:
-        print('GPU information:')
-        print(torch.cuda.memory_summary(), end='')
+    # if args.gpu:
+    #     print('GPU information:')
+    #     print(torch.cuda.memory_summary(), end='')
     print('Evaluating Network...')
     print('Test set: Average loss: {:.4f}, Accuracy: {:.4f}, Time consumed: {:.2f}s'.format(
         test_loss / len(test_dataloader.dataset),

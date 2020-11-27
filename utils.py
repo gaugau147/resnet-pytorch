@@ -191,7 +191,7 @@ def get_train_data(data_folder, batch_size):
 
     # wrap data and label into Tensor
     dataloader = DataLoader(image_dataset,
-                            batch_size=4,
+                            batch_size=16,
                             shuffle=True,
                             num_workers=4)
     return dataloader
@@ -202,10 +202,10 @@ def get_test_data(data_folder, batch_size):
     Get data from root folder
     Return torch dataloader
 
-    root
-    |_class_1
+    root/
+    |_class_1/
     |  |_image1.png
-    |_class_2
+    |_class_2/
        |_image2.png
     '''
     data_transform = transforms.Compose([
@@ -217,7 +217,7 @@ def get_test_data(data_folder, batch_size):
 
     # wrap data and label into Tensor
     dataloader = DataLoader(image_dataset,
-                            batch_size=4,
+                            batch_size=16,
                             shuffle=True,
                             num_workers=4)
     return dataloader
